@@ -1,17 +1,17 @@
-class TodoModel {
+class Todo {
   String? id;
   String? title;
   String? description;
   bool? isCompleted;
 
-  TodoModel({
+  Todo({
     this.id,
     this.title,
     this.description,
     this.isCompleted,
   });
 
-  factory TodoModel.fromJson(Map<String, dynamic> json) => TodoModel(
+  factory Todo.fromJson(Map<String, dynamic> json) => Todo(
     id: json["id"],
     title: json["title"],
     description: json["description"],

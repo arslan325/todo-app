@@ -1,8 +1,10 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:todo_app/utills/routes/custom_routes.dart';
 import 'package:todo_app/utills/theme/app_theme.dart';
+import 'package:todo_app/view_models/todo_view_model.dart';
 
 import 'firebase_options.dart';
 
@@ -25,11 +27,14 @@ class MyApp extends StatelessWidget {
     return ScreenUtilInit(
         designSize: const Size(390, 844),
       builder: (BuildContext context, child) {
-        return MaterialApp.router(
-          title: 'Flutter Demo',
-          debugShowCheckedModeBanner: false,
-          theme: appTheme,
-          routerConfig: router,
+        return ChangeNotifierProvider(
+          create: (context) => TodoViewModel(),
+          child: MaterialApp.router(
+            title: 'Flutter Demo',
+            debugShowCheckedModeBanner: false,
+            theme: appTheme,
+            routerConfig: router,
+          ),
         );
       }
     );
