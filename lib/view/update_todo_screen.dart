@@ -32,6 +32,7 @@ class _UpdateTodoScreenState extends State<UpdateTodoScreen> {
     final theme = Theme.of(context);
     final todosProvider = Provider.of<TodoViewModel>(context, listen: true);
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: Text(
           'Update Task',
