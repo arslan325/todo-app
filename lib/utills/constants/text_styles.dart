@@ -19,7 +19,7 @@ class AppTextStyles{
 
   static TextStyle kHeadingSmall = GoogleFonts.nunito(
     fontSize: 20.sp,
-    fontWeight: FontWeight.w400,
+    fontWeight: FontWeight.w600,
     color: ColorsConstant.onPrimaryWhiteColor,
   );
 
@@ -31,7 +31,7 @@ class AppTextStyles{
 
   static TextStyle kBodyLarge = GoogleFonts.nunito(
     fontSize: 14.sp,
-    fontWeight: FontWeight.w700,
+    fontWeight: FontWeight.w500,
     color: ColorsConstant.onPrimaryWhiteColor,
   );
 }
