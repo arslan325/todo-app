@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
+import 'package:todo_app/utills/routes/route_names.dart';
 import 'package:todo_app/view/components/todo_card.dart';
 
 class TodoScreen extends StatefulWidget {
@@ -20,7 +22,7 @@ class _TodoScreenState extends State<TodoScreen> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: theme.colorScheme.secondary,
         onPressed: (){
-
+          context.push(AppRouteNames.addTodoScreenRoute);
         },
         child: const Icon(Icons.add),
       ),
