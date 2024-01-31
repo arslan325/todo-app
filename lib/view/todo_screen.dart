@@ -78,26 +78,27 @@ class _TodoScreenState extends State<TodoScreen> {
             SizedBox(
               height: 30.h,
             ),
-            Expanded(
-              child: FutureBuilder(
-                future: todosFuture,
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Center(
-                      child: CircularProgressIndicator(color: theme.colorScheme.onPrimaryContainer,),
-                    );
-                  }
-                  if (snapshot.hasError) {
-                    return Center(
-                      child: Text(
-                        snapshot.error.toString(),
-                        style: theme.textTheme.bodyLarge,
-                      ),
-                    );
-                  }
-                  return todoModel.todos.isNotEmpty
-                      ? ListView.separated(
+            FutureBuilder(
+              future: todosFuture,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(
+                    child: CircularProgressIndicator(color: theme.colorScheme.onPrimaryContainer,),
+                  );
+                }
+                if (snapshot.hasError) {
+                  return Center(
+                    child: Text(
+                      snapshot.error.toString(),
+                      style: theme.textTheme.bodyLarge,
+                    ),
+                  );
+                }
+                return todoModel.todos.isNotEmpty
+                    ? Expanded(
+                      child: ListView.separated(
                           itemCount: todoModel.todos.length,
+                          shrinkWrap: true,
                           itemBuilder: (context, index) {
                             return TodoCard(
                               todo: todoModel.todos[index],
@@ -108,15 +109,15 @@ class _TodoScreenState extends State<TodoScreen> {
                               height: 10.h,
                             );
                           },
-                        )
-                      : Center(
-                          child: Text(
-                            "No todos data found",
-                            style: theme.textTheme.bodyLarge,
-                          ),
-                        );
-                },
-              ),
+                        ),
+                    )
+                    : Center(
+                        child: Text(
+                          "No todos data found",
+                          style: theme.textTheme.bodyLarge,
+                        ),
+                      );
+              },
             ),
           ],
         ),
