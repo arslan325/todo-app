@@ -7,27 +7,28 @@ class TodoViewModel extends ChangeNotifier {
   final TodoRepository _repository = TodoRepository();
 
   Future<void> loadTodos() async {
-    todos = await _repository.getTodos() ?? [];
+    todos = await _repository.getTodos();
     notifyListeners();
   }
 
-  Future<void> addTodo(String title,String description) async {
-    if (todos.length >= 10) {
+  Future<bool> addTodo(String title,String description) async {
+    if (todos.length >= 2) {
       // Limit reached, show dialog
       // Implement your dialog logic here
-      return;
+      return false;
     }
     await _repository.addTodo(title,description);
     await loadTodos();
+    return true;
   }
 
-  Future<void> toggleTodo(Todo todo) async {
-    await _repository.updateTodos(todo);
+  Future<void> updateTodo(Map<String,dynamic> data,String id) async {
+    await _repository.updateTodos(data,id);
     await loadTodos();
   }
 
-  Future<void> removeTodo(Todo todo) async {
-    await _repository.removeTodo(todo);
+  Future<void> removeTodo(String id) async {
+    await _repository.removeTodo(id);
     await loadTodos();
   }
 }

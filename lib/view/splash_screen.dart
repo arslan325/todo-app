@@ -12,7 +12,7 @@ class SplashScreen extends StatefulWidget {
 class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
-    Future.delayed(const Duration(), () async {
+    Future.delayed(const Duration(seconds: 3), () async {
       context.go(AppRouteNames.todoScreenRoute);
     });
     super.initState();
