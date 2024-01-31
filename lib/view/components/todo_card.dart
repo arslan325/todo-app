@@ -4,6 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:provider/provider.dart';
 import 'package:todo_app/models/todo_model.dart';
 import 'package:todo_app/utills/constants/colors.dart';
+import 'package:todo_app/utills/routes/route_names.dart';
 import 'package:todo_app/view_models/todo_view_model.dart';
 
 import 'custom_toaster.dart';
@@ -60,13 +61,19 @@ class TodoCard extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(todo.title ?? '',style: theme.textTheme.headlineSmall,),
+              Text(todo.title ?? '',
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.headlineSmall,),
               SizedBox(height: 5.h,),
-              Text(todo.description ?? '',style: theme.textTheme.bodyLarge,),
+              Text(todo.description ?? '',
+                overflow: TextOverflow.ellipsis,
+                style: theme.textTheme.bodyLarge,),
             ],
           ),
           const Spacer(),
-          IconButton(onPressed: (){}, icon: Icon(Icons.edit,color: theme.colorScheme.onPrimaryContainer,))
+          IconButton(onPressed: (){
+            context.push(AppRouteNames.updateTodoScreenRoute,extra: todo);
+          }, icon: Icon(Icons.edit,color: theme.colorScheme.onPrimaryContainer,))
         ],
       ),
     );

@@ -83,8 +83,8 @@ class _TodoScreenState extends State<TodoScreen> {
                 future: todosFuture,
                 builder: (context, snapshot) {
                   if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const Center(
-                      child: CircularProgressIndicator(),
+                    return Center(
+                      child: CircularProgressIndicator(color: theme.colorScheme.onPrimaryContainer,),
                     );
                   }
                   if (snapshot.hasError) {

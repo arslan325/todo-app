@@ -12,9 +12,7 @@ class TodoViewModel extends ChangeNotifier {
   }
 
   Future<bool> addTodo(String title,String description) async {
-    if (todos.length >= 2) {
-      // Limit reached, show dialog
-      // Implement your dialog logic here
+    if (todos.length >= 10) {
       return false;
     }
     await _repository.addTodo(title,description);
